@@ -111,4 +111,21 @@ public class GameManager : MonoBehaviour
     {
         _cVisualManager.SetStats(_cStat.Temper, _cStat.Water);
     }
+    public void AddMoney(int amt)
+    {
+        _userData.Money += amt;
+        _uiManager.SetMoneyUI(_userData.Money);
+        saveData();
+    }
+    public bool UseMoney(int amt)
+    {
+        if (amt < 0)
+            if (_userData.Money < amt)
+                return false;
+
+        _userData.Money -= amt;
+        _uiManager.SetMoneyUI(_userData.Money);
+        saveData();
+        return true;
+    }
 }
