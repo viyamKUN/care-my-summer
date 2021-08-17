@@ -12,6 +12,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image _waterdropGage = null;
     [SerializeField] private Image _temperGage = null;
     [SerializeField] private Image _waterGage = null;
+    [Space]
+    [SerializeField] private GameObject _itemPanel = null;
+    [SerializeField] private GameObject _envPanel = null;
+    [SerializeField] private GameObject _dictPanel = null;
 
     public void SetGageUI(int level, int waterdrop)
     {
@@ -30,5 +34,17 @@ public class UIManager : MonoBehaviour
     public void SetRainText()
     {
         _rainText.text = ""; //가 내린다..
+    }
+    public void ClickDict()
+    {
+        _dictPanel.SetActive(!_dictPanel.activeSelf);
+    }
+    public void ClickEnv()
+    {
+        _envPanel.SetActive(!_envPanel.activeSelf);
+    }
+    public void ClickItem()
+    {
+        _itemPanel.SetActive(!_itemPanel.activeSelf);
     }
 }
