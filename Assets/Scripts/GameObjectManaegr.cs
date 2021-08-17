@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 using GameObjectSystem;
+using EndingSystem;
 
 public class GameObjectManaegr : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class GameObjectManaegr : MonoBehaviour
     [SerializeField] private Sprite[] _endingImages = null;
 
     Dictionary<WeatherStat, int> _rainData = null;
+    Dictionary<string, Ending> _endings = null;
     List<EnvObject> _envObjects;
     List<Item> _items;
     public List<EnvObject> EnvObjects => _envObjects;
@@ -23,6 +25,7 @@ public class GameObjectManaegr : MonoBehaviour
     {
         _envObjects = _csvReader.ReadEnvironments();
         _items = _csvReader.ReadItems();
+        _endings = _csvReader.ReadEndings();
         _rainData = new Dictionary<WeatherStat, int>()
         {
             {WeatherStat.NONE,0}, {WeatherStat.안개비,3}, {WeatherStat.는개,10}, {WeatherStat.이슬비,20}, {WeatherStat.가랑비,40}, {WeatherStat.장대비,60}, {WeatherStat.소나기,100}
@@ -42,5 +45,7 @@ public class GameObjectManaegr : MonoBehaviour
     public Sprite GetItemImage(int index) => _itemImages[index];
 
     public Sprite GetEndingImage(int index) => _endingImages[index];
+
+    public Ending GetEnding(string code) => _endings[code];
 
 }

@@ -45,7 +45,7 @@ public class CSVReader : MonoBehaviour
         while ((line = file.ReadLine()) != null)
         {
             List<string> ls = line.Split(',').ToList();
-            endinglist.Add(ls[0], new Ending(ls[1], ls[2]));
+            endinglist.Add(ls[0], new Ending(int.Parse(ls[1]), ls[2], ls[3]));
         }
         return endinglist;
     }

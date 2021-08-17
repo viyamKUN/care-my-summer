@@ -25,6 +25,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private ItemPanel _iPanel = null;
     [SerializeField] private PurchasePanel _purchasePanel = null;
     [Space]
+    [SerializeField] private GameObject _endingPanel = null;
+    [SerializeField] private Text _endingTitle = null;
+    [SerializeField] private Text _endingInfo = null;
+    [SerializeField] private Image _endingProfile = null;
+    [Space]
     [SerializeField] private GameManager _gameManager = null;
     [SerializeField] private GameObjectManaegr _gameObjectManager = null;
 
@@ -132,6 +137,16 @@ public class UIManager : MonoBehaviour
                 ClickItem();
                 break;
         }
+    }
+    public void ShowEnding(string endingCode)
+    {
+        if (_endingPanel.activeSelf) return;
+
+        EndingSystem.Ending ending = _gameObjectManager.GetEnding(endingCode);
+        _endingTitle.text = ending.Name;
+        _endingInfo.text = ending.Info;
+        _endingProfile.sprite = _gameObjectManager.GetEndingImage(ending.ID);
+        _endingPanel.SetActive(true);
     }
 }
 
