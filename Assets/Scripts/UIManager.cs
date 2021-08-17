@@ -23,6 +23,11 @@ public class UIManager : MonoBehaviour
         SceneControll.MoveScene(SceneName.LOBBY);
     }
 
+    public void GoBlog()
+    {
+        Application.OpenURL("https://viyamkun.github.io");
+    }
+
     public void SetGageUI(int level, int waterdrop)
     {
         _levelText.text = FixedValue.LEVEL_NAME[level];
