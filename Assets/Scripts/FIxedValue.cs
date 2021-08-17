@@ -9,10 +9,10 @@ public static class FixedValue
     public static List<string> LEVEL_NAME = new List<string>() { "편여름", "초여름", "한여름", "늦여름", "완여름" };
     public static int MAX_TEMPER = 40;
     public static Dictionary<SceneName, string> SCENE_NAME = new Dictionary<SceneName, string>() {
-        {SceneName.LOBBY, "Lobby"},{SceneName.GAME, "Game"},{SceneName.INTRO, "Intro"},{SceneName.ENDING, "Ending"}
+        {SceneName.LOBBY, "Lobby"},{SceneName.GAME, "Game"}
     };
 }
 public enum SceneName
 {
-    LOBBY, GAME, INTRO, ENDING
+    LOBBY, GAME
 }
