@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     CharacterStatus _cStat;
     GameObjectSystem.WeatherStat _nowWeather;
 
+    float _oneSecondBucket = 0;
     float _saveTimeBucket = 0;
 
     void Start()
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviour
         SetRain((GameObjectSystem.WeatherStat)(_cStat.Level + 1));
 
         _saveTimeBucket = Time.time;
+        _oneSecondBucket = Time.time;
     }
 
     void Update()
@@ -54,6 +56,29 @@ public class GameManager : MonoBehaviour
         {
             _saveTimeBucket = Time.time;
             saveData();
+        }
+        if (Time.time - _oneSecondBucket > 1)
+        {
+            _oneSecondBucket = Time.time;
+            switch (_nowWeather)
+            {
+                case GameObjectSystem.WeatherStat.NONE:
+                    ChangeWater(-0.01f);
+                    ChangeTemper(0.05f);
+                    break;
+                case GameObjectSystem.WeatherStat.소나기:
+                    ChangeWater(0.02f);
+                    ChangeTemper(-0.1f);
+                    AddWaterDrop(_gameObjectManager.GetRainMineAmount(_nowWeather));
+                    break;
+                default:
+                    ChangeWater(0.01f);
+                    ChangeTemper(-0.05f);
+                    Debug.Log(_cStat.Water);
+                    AddWaterDrop(_gameObjectManager.GetRainMineAmount(_nowWeather));
+                    break;
+            }
+
         }
     }
 
@@ -126,14 +151,18 @@ public class GameManager : MonoBehaviour
         _uiManager.SetGageUI(_cStat.Level, _cStat.GrowGage);
         saveData();
     }
-    public void ChangeTemper(int amt)
+    public void ChangeTemper(float amt)
     {
+        _cStat.Temper += amt;
         _cVisualManager.SetStats(_cStat.Temper, _cStat.Water);
+        _uiManager.SetEnvStatUI(_cStat.Temper, _cStat.Water);
     }
 
     public void ChangeWater(float amt)
     {
+        _cStat.Water += amt;
         _cVisualManager.SetStats(_cStat.Temper, _cStat.Water);
+        _uiManager.SetEnvStatUI(_cStat.Temper, _cStat.Water);
     }
     public void AddMoney(int amt)
     {

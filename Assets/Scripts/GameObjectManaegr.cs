@@ -21,4 +21,9 @@ public class GameObjectManaegr : MonoBehaviour
             {WeatherStat.NONE,0}, {WeatherStat.안개비,3}, {WeatherStat.는개,10}, {WeatherStat.이슬비,20}, {WeatherStat.가랑비,40}, {WeatherStat.장대비,60}
         };
     }
+
+    public int GetRainMineAmount(WeatherStat weather)
+    {
+        return _rainData[weather];
+    }
 }

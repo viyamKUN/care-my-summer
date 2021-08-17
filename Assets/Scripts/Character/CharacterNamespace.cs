@@ -24,14 +24,14 @@ namespace CharacterNamespace
     {
         public int Level;
         public int GrowGage;
-        public int Temper;
+        public float Temper;
         public float Water;
         public CharacterStatus()
         {
             Level = 0;
             GrowGage = 0;
             Temper = 25;
-            Water = 0.5f;
+            Water = 0.2f;
         }
     }
 }

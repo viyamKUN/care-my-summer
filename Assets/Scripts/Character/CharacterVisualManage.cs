@@ -15,7 +15,7 @@ public class CharacterVisualManage : MonoBehaviour
         _faceAnim.SetLayerWeight(level, 1);
     }
 
-    public void SetStats(int temper, float water)
+    public void SetStats(float temper, float water)
     {
         _faceAnim.SetFloat("temper", temper < 20 ? -1 : (temper > 30 ? 1 : 0));
         _faceAnim.SetFloat("water", water * 2 - 1);
