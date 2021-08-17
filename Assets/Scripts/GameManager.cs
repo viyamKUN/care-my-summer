@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
 
         _uiManager.SetGageUI(_cStat.Level, _cStat.GrowGage);
         _uiManager.SetEnvStatUI(_cStat.Temper, _cStat.Water);
+        _cVisualManager.SetStats(_cStat.Temper, _cStat.Water);
 
         _saveTimeBucket = Time.time;
     }
@@ -90,5 +91,14 @@ public class GameManager : MonoBehaviour
         }
         _uiManager.SetGageUI(_cStat.Level, _cStat.GrowGage);
         saveData();
+    }
+    public void ChangeTemper(int amt)
+    {
+        _cVisualManager.SetStats(_cStat.Temper, _cStat.Water);
+    }
+
+    public void ChangeWater(float amt)
+    {
+        _cVisualManager.SetStats(_cStat.Temper, _cStat.Water);
     }
 }
