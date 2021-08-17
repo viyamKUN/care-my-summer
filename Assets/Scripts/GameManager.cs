@@ -1,18 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CharacterNamespace;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private CharacterVisualManage _cVisualManager = null;
+    CharacterStatus _cStat;
     void Start()
+    {
+        loadData();
+        _cVisualManager.SetLevel(_cStat.Level);
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            _cVisualManager.SetLevel(++_cStat.Level);
+        }
+    }
+
+    void saveData()
     {
 
     }
 
-    // Update is called once per frame
-    void Update()
+    void loadData()
+    {
+        initData(); // TODO
+    }
+
+    void deleteData()
     {
 
+    }
+
+    void initData()
+    {
+        _cStat = new CharacterStatus();
     }
 }
