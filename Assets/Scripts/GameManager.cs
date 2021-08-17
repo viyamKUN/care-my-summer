@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     float _foxTimeBucket = 0;
 
     int _miningMoneyAmount = 0;
+    bool _isGameOver = false;
 
     void Start()
     {
@@ -63,14 +64,14 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        // if (Input.GetKeyDown(KeyCode.A))
-        // {
-        //     AddWaterDrop(100);
-        // }
-        // if (Input.GetKeyDown(KeyCode.D))
-        // {
-        //     AddMoney(10000);
-        // }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            AddWaterDrop(100);
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            AddMoney(10000);
+        }
         if (Time.time - _foxTimeBucket > _foxComeRate)
         {
             _foxTimeBucket = Time.time;
@@ -183,7 +184,7 @@ public class GameManager : MonoBehaviour
     }
     public void ChangeTemper(float amt)
     {
-        _cStat.Temper = Mathf.Clamp(_cStat.Temper + amt, 10, FixedValue.MAX_TEMPER);
+        _cStat.Temper = Mathf.Clamp(_cStat.Temper + amt, 0, FixedValue.MAX_TEMPER);
         _cVisualManager.SetStats(_cStat.Temper, _cStat.Water);
         _uiManager.SetEnvStatUI(_cStat.Temper, _cStat.Water);
         saveData();
@@ -200,6 +201,8 @@ public class GameManager : MonoBehaviour
     }
     public void AddMoney(int amt)
     {
+        if (_isGameOver) return;
+
         _userData.Money += amt;
         _uiManager.SetMoneyUI(_userData.Money);
         saveData();
@@ -302,10 +305,12 @@ public class GameManager : MonoBehaviour
         if (!_userData.Endings.Contains(endingID))
             _userData.Endings.Add(endingID);
 
+        if (!_uiManager.ShowEnding(code)) return;
+
+        _isGameOver = true;
+
         _userData.Money += 2000;
         _userData.cStatus = new CharacterStatus();
         saveData();
-
-        if (!_uiManager.ShowEnding(code)) return;
     }
 }
