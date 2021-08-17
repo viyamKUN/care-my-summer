@@ -80,6 +80,7 @@ public class UIManager : MonoBehaviour
         _itemPanel.SetActive(false);
         _dictPanel.SetActive(false);
         ShutPurchasePanel();
+        if (!_envPanel.activeSelf) _environmentPanel.UpdatePanel();
         _envPanel.SetActive(!_envPanel.activeSelf);
     }
     public void ClickItem()
@@ -87,6 +88,7 @@ public class UIManager : MonoBehaviour
         _envPanel.SetActive(false);
         _dictPanel.SetActive(false);
         ShutPurchasePanel();
+        if (!_itemPanel.activeSelf) _iPanel.UpdatePanel();
         _itemPanel.SetActive(!_itemPanel.activeSelf);
     }
     public void ShowSeed()

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class EnvironmentUIunit : MonoBehaviour
 {
+    [SerializeField] private Button _button = null;
     [SerializeField] private Image _image = null;
     [SerializeField] private Text _nameText = null;
     [SerializeField] private Text _infoText = null;
@@ -26,5 +27,9 @@ public class EnvironmentUIunit : MonoBehaviour
     public void ClickToBuy()
     {
         UIManager.Instance.ShowPurchasePanel(_code, _id);
+    }
+    public void TurnOnOff(bool isonOff)
+    {
+        _button.interactable = isonOff;
     }
 }

@@ -181,13 +181,20 @@ public class GameManager : MonoBehaviour
     }
     public bool UseMoney(int amt)
     {
-        if (_userData.Money < amt)
-            return false;
+        if (!CanBuy(amt)) return false;
 
         _userData.Money -= amt;
         _uiManager.SetMoneyUI(_userData.Money);
         saveData();
         return true;
+    }
+    public bool CanBuy(int target)
+    {
+        return _userData.Money >= target;
+    }
+    public bool IsExist(int target)
+    {
+        return _userData.Environments.Contains(target);
     }
     public void GetSeed()
     {
