@@ -278,4 +278,13 @@ public class GameManager : MonoBehaviour
             _miningMoneyAmount += _gameObjectManager.EnvObjects[index].MiningAmount;
         }
     }
+    public void CallEnding(string code)
+    {
+        int endingID = _gameObjectManager.GetEnding(code).ID;
+        if (_userData.Endings.Contains(endingID)) return;
+
+        _userData.Endings.Add(endingID);
+
+        if (!_uiManager.ShowEnding(code)) return;
+    }
 }

@@ -138,15 +138,17 @@ public class UIManager : MonoBehaviour
                 break;
         }
     }
-    public void ShowEnding(string endingCode)
+    public bool ShowEnding(string endingCode)
     {
-        if (_endingPanel.activeSelf) return;
+        if (_endingPanel.activeSelf) return false;
 
         EndingSystem.Ending ending = _gameObjectManager.GetEnding(endingCode);
         _endingTitle.text = ending.Name;
         _endingInfo.text = ending.Info;
         _endingProfile.sprite = _gameObjectManager.GetEndingImage(ending.ID);
         _endingPanel.SetActive(true);
+
+        return true;
     }
 }
 
