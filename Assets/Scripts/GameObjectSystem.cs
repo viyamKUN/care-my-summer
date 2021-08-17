@@ -1,6 +1,5 @@
 namespace GameObjectSystem
 {
-
     public class EnvObject
     {
         public string Name;
