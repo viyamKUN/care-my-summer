@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     [Space]
     [SerializeField] private GameObject _rainObject = null;
     [SerializeField] private GameObject _powerRainObject = null;
+    [SerializeField] private GameObject _rainbowObject = null;
 
     UserData _userData;
     CharacterStatus _cStat;
@@ -36,6 +37,8 @@ public class GameManager : MonoBehaviour
         _uiManager.SetMoneyUI(_userData.Money);
 
         _cVisualManager.SetStats(_cStat.Temper, _cStat.Water);
+
+        if (_cStat.HasSeed) _uiManager.ShowSeed();
 
         SetRain((GameObjectSystem.WeatherStat)(_cStat.Level + 1));
 
@@ -182,5 +185,11 @@ public class GameManager : MonoBehaviour
         _uiManager.SetMoneyUI(_userData.Money);
         saveData();
         return true;
+    }
+    public void GetSeed()
+    {
+        _cStat.HasSeed = true;
+        saveData();
+        _uiManager.ShowSeed();
     }
 }

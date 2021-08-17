@@ -26,12 +26,14 @@ namespace CharacterNamespace
         public int GrowGage;
         public float Temper;
         public float Water;
+        public bool HasSeed;
         public CharacterStatus()
         {
             Level = 0;
             GrowGage = 0;
             Temper = 25;
             Water = 0.2f;
+            HasSeed = false;
         }
     }
 }

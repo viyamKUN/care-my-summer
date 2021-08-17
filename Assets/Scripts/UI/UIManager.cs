@@ -13,6 +13,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image _temperGage = null;
     [SerializeField] private Image _waterGage = null;
     [Space]
+    [SerializeField] private Image _summerseedIcon = null;
+    [Space]
     [SerializeField] private GameObject _itemPanel = null;
     [SerializeField] private GameObject _envPanel = null;
     [SerializeField] private GameObject _dictPanel = null;
@@ -51,5 +53,9 @@ public class UIManager : MonoBehaviour
     public void ClickItem()
     {
         _itemPanel.SetActive(!_itemPanel.activeSelf);
+    }
+    public void ShowSeed()
+    {
+        _summerseedIcon.gameObject.SetActive(true);
     }
 }
