@@ -9,11 +9,14 @@ using CharacterNamespace;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private CharacterVisualManage _cVisualManager = null;
+    [SerializeField] private float _saveRate = 2f;
     CharacterStatus _cStat;
+    float _saveTimeBucket = 0;
     void Start()
     {
         loadData();
         _cVisualManager.SetLevel(_cStat.Level);
+        _saveTimeBucket = Time.time;
     }
 
     void Update()
@@ -21,6 +24,15 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             _cVisualManager.SetLevel(++_cStat.Level);
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            deleteData();
+        }
+        if (Time.time - _saveTimeBucket > _saveRate)
+        {
+            _saveTimeBucket = Time.time;
+            saveData();
         }
     }
 

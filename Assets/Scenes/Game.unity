@@ -2670,6 +2670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cVisualManager: {fileID: 2139011848}
+  _saveRate: 10
 --- !u!114 &2139011848
 MonoBehaviour:
   m_ObjectHideFlags: 0
