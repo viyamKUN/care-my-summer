@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float _saveRate = 2f;
     [Space]
     [SerializeField] private GameObject _rainObject = null;
+    [SerializeField] private GameObject _powerRainObject = null;
 
     UserData _userData;
     CharacterStatus _cStat;
@@ -74,7 +75,6 @@ public class GameManager : MonoBehaviour
                 default:
                     ChangeWater(0.01f);
                     ChangeTemper(-0.05f);
-                    Debug.Log(_cStat.Water);
                     AddWaterDrop(_gameObjectManager.GetRainMineAmount(_nowWeather));
                     break;
             }
@@ -125,13 +125,15 @@ public class GameManager : MonoBehaviour
         {
             case GameObjectSystem.WeatherStat.NONE:
                 _rainObject.SetActive(false);
+                _powerRainObject.SetActive(false);
                 break;
             case GameObjectSystem.WeatherStat.소나기:
                 _rainObject.SetActive(false);
-                // TODO Turn On 소나기 object
+                _powerRainObject.SetActive(true);
                 break;
             default:
                 _rainObject.SetActive(true);
+                _powerRainObject.SetActive(false);
                 break;
         }
     }
