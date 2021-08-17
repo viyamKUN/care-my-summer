@@ -11,6 +11,7 @@ public class GameObjectManaegr : MonoBehaviour
     [SerializeField] private Sprite[] _envImages = null;
     [Space]
     [SerializeField] private GameObject[] _environments = null;
+    [SerializeField] private Sprite[] _endingImages = null;
 
     Dictionary<WeatherStat, int> _rainData = null;
     List<EnvObject> _envObjects;
@@ -39,5 +40,7 @@ public class GameObjectManaegr : MonoBehaviour
     public Sprite GetEnvImage(int index) => _envImages[index];
 
     public Sprite GetItemImage(int index) => _itemImages[index];
+
+    public Sprite GetEndingImage(int index) => _endingImages[index];
 
 }

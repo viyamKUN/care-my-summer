@@ -12011,6 +12011,10 @@ MonoBehaviour:
   - {fileID: 1159622092}
   - {fileID: 385402658}
   - {fileID: 291315736}
+  _endingImages:
+  - {fileID: 21300000, guid: 46e345b3e4c5f4a33a5b3e61d44dc4d6, type: 3}
+  - {fileID: 21300000, guid: 422ee6a66980542cb95612a4ae0817ed, type: 3}
+  - {fileID: 21300000, guid: 8d3abbc9c77704afa929194910ca9d7e, type: 3}
 --- !u!1001 &4157605018910865627
 PrefabInstance:
   m_ObjectHideFlags: 0
