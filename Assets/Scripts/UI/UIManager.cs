@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private Text _levelText = null;
+    [SerializeField] private Text _moneyText = null;
     [SerializeField] private Image _waterdropGage = null;
     [SerializeField] private Image _temperGage = null;
     [SerializeField] private Image _waterGage = null;
@@ -20,5 +21,9 @@ public class UIManager : MonoBehaviour
     {
         _waterGage.fillAmount = water;
         _temperGage.fillAmount = (float)temper / FixedValue.MAX_TEMPER;
+    }
+    public void SetMoneyUI(int amt)
+    {
+        _moneyText.text = amt.ToString() + " 장";
     }
 }
