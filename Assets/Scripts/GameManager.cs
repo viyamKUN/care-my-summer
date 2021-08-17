@@ -64,14 +64,14 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            AddWaterDrop(100);
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            AddMoney(10000);
-        }
+        // if (Input.GetKeyDown(KeyCode.A))
+        // {
+        //     AddWaterDrop(100);
+        // }
+        // if (Input.GetKeyDown(KeyCode.D))
+        // {
+        //     AddMoney(10000);
+        // }
         if (Time.time - _foxTimeBucket > _foxComeRate)
         {
             _foxTimeBucket = Time.time;
