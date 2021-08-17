@@ -980,8 +980,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2139011846}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+      - m_Target: {fileID: 2139011849}
+        m_TargetAssemblyTypeName: OptionPanel, Assembly-CSharp
         m_MethodName: GoBlog
         m_Mode: 1
         m_Arguments:
@@ -2027,8 +2027,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2139011846}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+      - m_Target: {fileID: 2139011849}
+        m_TargetAssemblyTypeName: OptionPanel, Assembly-CSharp
         m_MethodName: GoMain
         m_Mode: 1
         m_Arguments:
@@ -2160,8 +2160,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2139011846}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+      - m_Target: {fileID: 2139011849}
+        m_TargetAssemblyTypeName: OptionPanel, Assembly-CSharp
         m_MethodName: ClckOption
         m_Mode: 1
         m_Arguments:
@@ -2603,8 +2603,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2139011846}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+      - m_Target: {fileID: 2139011849}
+        m_TargetAssemblyTypeName: OptionPanel, Assembly-CSharp
         m_MethodName: ClckOption
         m_Mode: 1
         m_Arguments:
@@ -3642,6 +3642,7 @@ GameObject:
   - component: {fileID: 2139011845}
   - component: {fileID: 2139011847}
   - component: {fileID: 2139011846}
+  - component: {fileID: 2139011849}
   - component: {fileID: 2139011848}
   m_Layer: 0
   m_Name: Manager
@@ -3681,7 +3682,6 @@ MonoBehaviour:
   _waterdropGage: {fileID: 1465309793}
   _temperGage: {fileID: 1932925456}
   _waterGage: {fileID: 794900472}
-  _optionPanel: {fileID: 955746229}
 --- !u!114 &2139011847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3711,3 +3711,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _anim: {fileID: 275103789}
   _faceAnim: {fileID: 1612853971}
+--- !u!114 &2139011849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139011844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f8e5be41b9fa41a7a54480387ff5f29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _optionPanel: {fileID: 955746229}
