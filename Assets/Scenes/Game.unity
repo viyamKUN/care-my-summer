@@ -3870,9 +3870,10 @@ GameObject:
   - component: {fileID: 2139011845}
   - component: {fileID: 2139011847}
   - component: {fileID: 2139011846}
-  - component: {fileID: 2139011849}
   - component: {fileID: 2139011848}
+  - component: {fileID: 2139011851}
   - component: {fileID: 2139011850}
+  - component: {fileID: 2139011849}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -3926,6 +3927,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cVisualManager: {fileID: 2139011848}
   _uiManager: {fileID: 2139011846}
+  _gameObjectManager: {fileID: 2139011851}
   _saveRate: 10
 --- !u!114 &2139011848
 MonoBehaviour:
@@ -3968,3 +3970,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _environment: {fileID: 4900000, guid: c1b785426bd1f4bf8aa9b7dda81069ae, type: 3}
   _items: {fileID: 4900000, guid: d501e2f0e65fe44f79a82c31bdce5386, type: 3}
+--- !u!114 &2139011851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139011844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d0795fd46c624cd49114dea66f51d5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _csvReader: {fileID: 2139011850}

@@ -10,12 +10,15 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private CharacterVisualManage _cVisualManager = null;
     [SerializeField] private UIManager _uiManager = null;
+    [SerializeField] private GameObjectManaegr _gameObjectManager = null;
     [SerializeField] private float _saveRate = 2f;
     UserData _userData;
     CharacterStatus _cStat;
     float _saveTimeBucket = 0;
     void Start()
     {
+        _gameObjectManager.ReadData();
+
         loadData();
         _cVisualManager.SetLevel(_cStat.Level);
 
