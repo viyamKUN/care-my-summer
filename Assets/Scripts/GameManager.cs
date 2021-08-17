@@ -90,6 +90,7 @@ public class GameManager : MonoBehaviour
             if (_cStat.Level >= FixedValue.MAX_LEVEL)
             {
                 Debug.Log("Call Ending");
+                _userData.Money += 2000;
                 return;
             }
             _cVisualManager.SetLevel(++_cStat.Level);

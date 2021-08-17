@@ -8,10 +8,12 @@ namespace CharacterNamespace
         public int Money;
         public CharacterStatus cStatus;
         public List<int> Endings;
+        public List<int> Environments;
         public UserData()
         {
             cStatus = new CharacterStatus();
             Endings = new List<int>();
+            Environments = new List<int>();
             Money = 2000;
 
         }
