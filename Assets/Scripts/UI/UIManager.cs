@@ -54,14 +54,20 @@ public class UIManager : MonoBehaviour
     }
     public void ClickDict()
     {
+        _envPanel.SetActive(false);
+        _itemPanel.SetActive(false);
         _dictPanel.SetActive(!_dictPanel.activeSelf);
     }
     public void ClickEnv()
     {
+        _itemPanel.SetActive(false);
+        _dictPanel.SetActive(false);
         _envPanel.SetActive(!_envPanel.activeSelf);
     }
     public void ClickItem()
     {
+        _envPanel.SetActive(false);
+        _dictPanel.SetActive(false);
         _itemPanel.SetActive(!_itemPanel.activeSelf);
     }
     public void ShowSeed()
