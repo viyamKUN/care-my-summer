@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] private Text _levelText = null;
     [SerializeField] private Text _moneyText = null;
+    [SerializeField] private Text _rainText = null;
     [SerializeField] private Image _waterdropGage = null;
     [SerializeField] private Image _temperGage = null;
     [SerializeField] private Image _waterGage = null;
@@ -25,5 +26,9 @@ public class UIManager : MonoBehaviour
     public void SetMoneyUI(int amt)
     {
         _moneyText.text = amt.ToString() + " 장";
+    }
+    public void SetRainText()
+    {
+        _rainText.text = ""; //가 내린다..
     }
 }

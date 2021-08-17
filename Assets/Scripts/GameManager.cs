@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
         _uiManager.SetGageUI(_cStat.Level, _cStat.GrowGage);
         _uiManager.SetEnvStatUI(_cStat.Temper, _cStat.Water);
         _uiManager.SetMoneyUI(_userData.Money);
+        _uiManager.SetRainText();
 
         _cVisualManager.SetStats(_cStat.Temper, _cStat.Water);
 
