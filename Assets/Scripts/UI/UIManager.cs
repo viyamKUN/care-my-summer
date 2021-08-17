@@ -21,6 +21,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _envPanel = null;
     [SerializeField] private GameObject _dictPanel = null;
     [Space]
+    [SerializeField] private EndingListPanel _endingListPanel = null;
     [SerializeField] private EnvironmentPanel _environmentPanel = null;
     [SerializeField] private ItemPanel _iPanel = null;
     [SerializeField] private PurchasePanel _purchasePanel = null;
@@ -77,6 +78,7 @@ public class UIManager : MonoBehaviour
     {
         _envPanel.SetActive(false);
         _itemPanel.SetActive(false);
+        if (!_dictPanel.activeSelf) _endingListPanel.UpdatePanel();
         ShutPurchasePanel();
         _dictPanel.SetActive(!_dictPanel.activeSelf);
     }

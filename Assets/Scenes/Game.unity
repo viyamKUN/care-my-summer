@@ -5938,6 +5938,7 @@ GameObject:
   - component: {fileID: 970973907}
   - component: {fileID: 970973909}
   - component: {fileID: 970973908}
+  - component: {fileID: 970973910}
   m_Layer: 5
   m_Name: DictPanel
   m_TagString: Untagged
@@ -6005,6 +6006,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 970973906}
   m_CullTransparentMesh: 1
+--- !u!114 &970973910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 970973906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 460e015461ea347c0bbb75eaaaf47ed8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _content: {fileID: 993668746}
+  _gameManager: {fileID: 2139011847}
+  _gameObjectManager: {fileID: 2139011851}
 --- !u!1 &993668746
 GameObject:
   m_ObjectHideFlags: 0
@@ -12255,6 +12271,7 @@ MonoBehaviour:
   _itemPanel: {fileID: 116622462}
   _envPanel: {fileID: 1131583248}
   _dictPanel: {fileID: 970973906}
+  _endingListPanel: {fileID: 970973910}
   _environmentPanel: {fileID: 1131583252}
   _iPanel: {fileID: 116622466}
   _purchasePanel: {fileID: 917302198}

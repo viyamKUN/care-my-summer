@@ -18,6 +18,8 @@ public class GameObjectManaegr : MonoBehaviour
     Dictionary<string, Ending> _endings = null;
     List<EnvObject> _envObjects;
     List<Item> _items;
+
+    public Dictionary<string, Ending> Endings => _endings;
     public List<EnvObject> EnvObjects => _envObjects;
     public List<Item> ItemObjects => _items;
 

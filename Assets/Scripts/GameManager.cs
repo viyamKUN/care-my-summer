@@ -242,6 +242,10 @@ public class GameManager : MonoBehaviour
                 break;
         }
     }
+    public bool IsEndingContain(int id)
+    {
+        return _userData.Endings.Contains(id);
+    }
     public void BuyEnvironment(int id)
     {
         int price = _gameObjectManager.EnvObjects[id].Price;
