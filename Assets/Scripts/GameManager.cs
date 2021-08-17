@@ -9,6 +9,7 @@ using CharacterNamespace;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private CharacterVisualManage _cVisualManager = null;
+    [SerializeField] private UIManager _uiManager = null;
     [SerializeField] private float _saveRate = 2f;
     CharacterStatus _cStat;
     float _saveTimeBucket = 0;
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour
     {
         loadData();
         _cVisualManager.SetLevel(_cStat.Level);
+        _uiManager.SetGageUI(_cStat.Level, _cStat.GrowGage);
         _saveTimeBucket = Time.time;
     }
 
@@ -82,7 +84,8 @@ public class GameManager : MonoBehaviour
                 return;
             }
             _cVisualManager.SetLevel(++_cStat.Level);
-            saveData();
         }
+        _uiManager.SetGageUI(_cStat.Level, _cStat.GrowGage);
+        saveData();
     }
 }
