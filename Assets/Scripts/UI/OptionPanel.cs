@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class OptionPanel : MonoBehaviour
@@ -24,5 +23,9 @@ public class OptionPanel : MonoBehaviour
     {
         Application.OpenURL("https://viyamkun.github.io");
     }
-
+    public void DeleteData()
+    {
+        var filename = FixedValue.SAVE_PATH;
+        File.Delete(filename);
+    }
 }
