@@ -4153,6 +4153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _environment: {fileID: 4900000, guid: c1b785426bd1f4bf8aa9b7dda81069ae, type: 3}
   _items: {fileID: 4900000, guid: d501e2f0e65fe44f79a82c31bdce5386, type: 3}
+  _endings: {fileID: 4900000, guid: 098bfb1c30a6945f3a0445a5f15bb288, type: 3}
 --- !u!114 &2139011851
 MonoBehaviour:
   m_ObjectHideFlags: 0
