@@ -25,6 +25,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private ItemPanel _iPanel = null;
     [SerializeField] private PurchasePanel _purchasePanel = null;
     [Space]
+    [SerializeField] private GameManager _gameManager = null;
     [SerializeField] private GameObjectManaegr _gameObjectManager = null;
 
     public static UIManager Instance = null;
@@ -116,7 +117,18 @@ public class UIManager : MonoBehaviour
     }
     public void Buy()
     {
-        Debug.Log(_perchaseTemp.Code + " : " + _perchaseTemp.ID);
+        switch (_perchaseTemp.Code)
+        {
+            case "E":
+                _gameManager.BuyEnvironment(_perchaseTemp.ID);
+                ShutPurchasePanel();
+                ClickEnv();
+                break;
+            case "I":
+                _gameManager.BuyItem(_perchaseTemp.ID);
+                ShutPurchasePanel();
+                break;
+        }
     }
 }
 

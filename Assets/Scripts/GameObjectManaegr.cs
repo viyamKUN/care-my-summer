@@ -9,6 +9,8 @@ public class GameObjectManaegr : MonoBehaviour
     [SerializeField] private CSVReader _csvReader = null;
     [SerializeField] private Sprite[] _itemImages = null;
     [SerializeField] private Sprite[] _envImages = null;
+    [Space]
+    [SerializeField] private GameObject[] _environments = null;
 
     Dictionary<WeatherStat, int> _rainData = null;
     List<EnvObject> _envObjects;
@@ -25,7 +27,13 @@ public class GameObjectManaegr : MonoBehaviour
             {WeatherStat.NONE,0}, {WeatherStat.안개비,3}, {WeatherStat.는개,10}, {WeatherStat.이슬비,20}, {WeatherStat.가랑비,40}, {WeatherStat.장대비,60}
         };
     }
-
+    public void SetEnvironmentObjects(List<int> myEnvList)
+    {
+        foreach (int index in myEnvList)
+        {
+            _environments[index].SetActive(true);
+        }
+    }
     public int GetRainMineAmount(WeatherStat weather) => _rainData[weather];
 
     public Sprite GetEnvImage(int index) => _envImages[index];

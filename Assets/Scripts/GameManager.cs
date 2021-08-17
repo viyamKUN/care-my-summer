@@ -44,6 +44,8 @@ public class GameManager : MonoBehaviour
 
         SetRain((GameObjectSystem.WeatherStat)(_cStat.Level + 1));
 
+        _gameObjectManager.SetEnvironmentObjects(_userData.Environments);
+
         _saveTimeBucket = Time.time;
         _oneSecondBucket = Time.time;
     }
@@ -179,9 +181,8 @@ public class GameManager : MonoBehaviour
     }
     public bool UseMoney(int amt)
     {
-        if (amt < 0)
-            if (_userData.Money < amt)
-                return false;
+        if (_userData.Money < amt)
+            return false;
 
         _userData.Money -= amt;
         _uiManager.SetMoneyUI(_userData.Money);
@@ -193,5 +194,19 @@ public class GameManager : MonoBehaviour
         _cStat.HasSeed = true;
         saveData();
         _uiManager.ShowSeed();
+    }
+    public void BuyItem(int id)
+    {
+        Debug.Log("Buy " + id);
+    }
+    public void BuyEnvironment(int id)
+    {
+        int price = _gameObjectManager.EnvObjects[id].Price;
+        if (!UseMoney(price))
+        {
+            return;
+        }
+        _userData.Environments.Add(id);
+        _gameObjectManager.SetEnvironmentObjects(_userData.Environments);
     }
 }
