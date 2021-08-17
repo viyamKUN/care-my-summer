@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            _cVisualManager.SetLevel(++_cStat.Level);
+            AddWaterDrop(100);
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
@@ -69,5 +69,20 @@ public class GameManager : MonoBehaviour
     {
         var filename = FixedValue.SAVE_PATH;
         File.Delete(filename);
+    }
+
+    public void AddWaterDrop(int amt)
+    {
+        _cStat.GrowGage += amt;
+        if (FixedValue.MAX_GAGE[_cStat.Level] <= _cStat.GrowGage)
+        {
+            if (_cStat.Level >= FixedValue.MAX_LEVEL)
+            {
+                Debug.Log("Call Ending");
+                return;
+            }
+            _cVisualManager.SetLevel(++_cStat.Level);
+            saveData();
+        }
     }
 }

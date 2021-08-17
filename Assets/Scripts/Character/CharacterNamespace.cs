@@ -4,8 +4,8 @@ namespace CharacterNamespace
     [System.Serializable]
     public class CharacterStatus
     {
-        public uint Level;
-        public uint GrowGage;
+        public int Level;
+        public int GrowGage;
         public int Money;
         public CharacterStatus()
         {
