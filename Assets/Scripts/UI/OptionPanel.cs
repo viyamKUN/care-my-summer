@@ -10,6 +10,7 @@ public class OptionPanel : MonoBehaviour
     public void ClckOption()
     {
         _optionPanel.SetActive(!_optionPanel.activeSelf);
+        SoundManager.Instance.PlayButtonSound();
     }
     public void GoMain()
     {
@@ -22,10 +23,12 @@ public class OptionPanel : MonoBehaviour
     public void GoBlog()
     {
         Application.OpenURL("https://viyamkun.github.io");
+        SoundManager.Instance.PlayButtonSound();
     }
     public void DeleteData()
     {
         var filename = FixedValue.SAVE_PATH;
         File.Delete(filename);
+        SoundManager.Instance.PlayButtonSound();
     }
 }

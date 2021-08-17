@@ -163,6 +163,7 @@ public class GameManager : MonoBehaviour
                 _powerRainObject.SetActive(false);
                 break;
         }
+        SoundManager.Instance.ChangeAudio(_nowWeather);
     }
     public void AddWaterDrop(int amt)
     {

@@ -81,6 +81,7 @@ public class UIManager : MonoBehaviour
         if (!_dictPanel.activeSelf) _endingListPanel.UpdatePanel();
         ShutPurchasePanel();
         _dictPanel.SetActive(!_dictPanel.activeSelf);
+        SoundManager.Instance.PlayButtonSound();
     }
     public void ClickEnv()
     {
@@ -89,6 +90,7 @@ public class UIManager : MonoBehaviour
         ShutPurchasePanel();
         if (!_envPanel.activeSelf) _environmentPanel.UpdatePanel();
         _envPanel.SetActive(!_envPanel.activeSelf);
+        SoundManager.Instance.PlayButtonSound();
     }
     public void ClickItem()
     {
@@ -97,6 +99,7 @@ public class UIManager : MonoBehaviour
         ShutPurchasePanel();
         if (!_itemPanel.activeSelf) _iPanel.UpdatePanel();
         _itemPanel.SetActive(!_itemPanel.activeSelf);
+        SoundManager.Instance.PlayButtonSound();
     }
     public void ShowSeed()
     {
@@ -126,6 +129,7 @@ public class UIManager : MonoBehaviour
     }
     public void Buy()
     {
+        SoundManager.Instance.PlayButtonSound();
         switch (_perchaseTemp.Code)
         {
             case "E":

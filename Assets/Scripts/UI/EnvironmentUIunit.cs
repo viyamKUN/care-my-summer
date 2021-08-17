@@ -26,6 +26,7 @@ public class EnvironmentUIunit : MonoBehaviour
 
     public void ClickToBuy()
     {
+        SoundManager.Instance.PlayButtonSound();
         UIManager.Instance.ShowPurchasePanel(_code, _id);
     }
     public void TurnOnOff(bool isonOff)
