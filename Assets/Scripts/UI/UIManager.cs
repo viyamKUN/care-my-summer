@@ -24,6 +24,8 @@ public class UIManager : MonoBehaviour
 
     public void Init()
     {
+        _envPanel.SetActive(true);
+        _itemPanel.SetActive(true);
         _environmentPanel.SetUI();
         _iPanel.SetUI();
         _envPanel.SetActive(false);
