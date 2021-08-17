@@ -1,19 +1,33 @@
+using System.Collections.Generic;
+
 namespace CharacterNamespace
 {
+    [System.Serializable]
+    public class UserData
+    {
+        public int Money;
+        public CharacterStatus cStatus;
+        public List<int> Endings;
+        public UserData()
+        {
+            cStatus = new CharacterStatus();
+            Endings = new List<int>();
+            Money = 2000;
+
+        }
+    }
 
     [System.Serializable]
     public class CharacterStatus
     {
         public int Level;
         public int GrowGage;
-        public int Money;
         public int Temper;
         public float Water;
         public CharacterStatus()
         {
             Level = 0;
             GrowGage = 0;
-            Money = 2000;
             Temper = 25;
             Water = 0.5f;
         }

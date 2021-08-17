@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private CharacterVisualManage _cVisualManager = null;
     [SerializeField] private UIManager _uiManager = null;
     [SerializeField] private float _saveRate = 2f;
+    UserData _userData;
     CharacterStatus _cStat;
     float _saveTimeBucket = 0;
     void Start()
@@ -48,7 +49,7 @@ public class GameManager : MonoBehaviour
 
         BinaryFormatter bin = new BinaryFormatter();
         FileStream fs = File.Create(filename);
-        bin.Serialize(fs, _cStat);
+        bin.Serialize(fs, _userData);
         fs.Close();
     }
 
@@ -58,14 +59,16 @@ public class GameManager : MonoBehaviour
 
         if (!File.Exists(filename))
         {
-            _cStat = new CharacterStatus();
+            _userData = new UserData();
+            _cStat = _userData.cStatus;
             return;
         }
         BinaryFormatter bin = new BinaryFormatter();
         FileStream fs = File.Open(filename, FileMode.Open);
         if (fs != null && fs.Length > 0)
         {
-            _cStat = (CharacterStatus)bin.Deserialize(fs);
+            _userData = (UserData)bin.Deserialize(fs);
+            _cStat = _userData.cStatus;
             fs.Close();
             return;
         }
