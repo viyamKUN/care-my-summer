@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _powerRainObject = null;
     [SerializeField] private GameObject _rainbowObject = null;
     [SerializeField] private GameObject _foxObject = null;
+    [Space]
+    [SerializeField] private ParticleSystem _particle = null;
 
     UserData _userData;
     CharacterStatus _cStat;
@@ -133,6 +135,13 @@ public class GameManager : MonoBehaviour
     {
         var filename = FixedValue.SAVE_PATH;
         File.Delete(filename);
+    }
+    public void PlayParticle()
+    {
+        _particle.gameObject.SetActive(true);
+        _particle.transform.position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        _particle.Stop();
+        _particle.Play();
     }
     public void SetRain(GameObjectSystem.WeatherStat weather)
     {
