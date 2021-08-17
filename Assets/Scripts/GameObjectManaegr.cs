@@ -24,7 +24,7 @@ public class GameObjectManaegr : MonoBehaviour
         _items = _csvReader.ReadItems();
         _rainData = new Dictionary<WeatherStat, int>()
         {
-            {WeatherStat.NONE,0}, {WeatherStat.안개비,3}, {WeatherStat.는개,10}, {WeatherStat.이슬비,20}, {WeatherStat.가랑비,40}, {WeatherStat.장대비,60}
+            {WeatherStat.NONE,0}, {WeatherStat.안개비,3}, {WeatherStat.는개,10}, {WeatherStat.이슬비,20}, {WeatherStat.가랑비,40}, {WeatherStat.장대비,60}, {WeatherStat.소나기,100}
         };
     }
     public void SetEnvironmentObjects(List<int> myEnvList)

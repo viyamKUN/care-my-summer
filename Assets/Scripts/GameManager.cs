@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     GameObjectSystem.WeatherStat _nowWeather;
 
     Coroutine _foxCome = null;
+    Coroutine _stopRain = null;
+    Coroutine _powerRain = null;
 
     float _oneSecondBucket = 0;
     float _foxTimeBucket = 0;
@@ -61,7 +63,7 @@ public class GameManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
-            deleteData();
+            AddMoney(10000);
         }
         if (Time.time - _foxTimeBucket > _foxComeRate)
         {
@@ -75,7 +77,7 @@ public class GameManager : MonoBehaviour
             {
                 case GameObjectSystem.WeatherStat.NONE:
                     ChangeWater(-0.01f);
-                    ChangeTemper(0.05f);
+                    ChangeTemper(0.1f);
                     break;
                 case GameObjectSystem.WeatherStat.소나기:
                     ChangeWater(0.02f);
@@ -159,20 +161,21 @@ public class GameManager : MonoBehaviour
                 return;
             }
             _cVisualManager.SetLevel(++_cStat.Level);
+            SetRain((GameObjectSystem.WeatherStat)(_cStat.Level + 1));
         }
         _uiManager.SetGageUI(_cStat.Level, _cStat.GrowGage);
         saveData();
     }
     public void ChangeTemper(float amt)
     {
-        _cStat.Temper += amt;
+        _cStat.Temper = Mathf.Clamp(_cStat.Temper + amt, 10, 40);
         _cVisualManager.SetStats(_cStat.Temper, _cStat.Water);
         _uiManager.SetEnvStatUI(_cStat.Temper, _cStat.Water);
     }
 
     public void ChangeWater(float amt)
     {
-        _cStat.Water += amt;
+        _cStat.Water = Mathf.Clamp(_cStat.Water + amt, 0, 1);
         _cVisualManager.SetStats(_cStat.Temper, _cStat.Water);
         _uiManager.SetEnvStatUI(_cStat.Temper, _cStat.Water);
     }
@@ -207,15 +210,37 @@ public class GameManager : MonoBehaviour
     }
     public void BuyItem(int id)
     {
-        Debug.Log("Buy " + id);
+        int price = _gameObjectManager.ItemObjects[id].Price;
+        if (!UseMoney(price)) return;
+
+        switch (id)
+        {
+            case 0:
+                if (_stopRain != null) StopCoroutine(_stopRain);
+                _powerRain = StartCoroutine(callPowerRain(10));
+                break;
+            case 1:
+                if (_powerRain != null) StopCoroutine(_powerRain);
+                _stopRain = StartCoroutine(stopRain(30));
+                break;
+            case 2:
+                Debug.Log("산성비 막아주는 아이템");
+                break;
+            case 3:
+                Debug.Log("태풍을 막아주는 아이템");
+                break;
+            case 4:
+                ChangeTemper(10);
+                break;
+            case 5:
+                ChangeWater(0.2f);
+                break;
+        }
     }
     public void BuyEnvironment(int id)
     {
         int price = _gameObjectManager.EnvObjects[id].Price;
-        if (!UseMoney(price))
-        {
-            return;
-        }
+        if (!UseMoney(price)) return;
         _userData.Environments.Add(id);
         _gameObjectManager.SetEnvironmentObjects(_userData.Environments);
     }
@@ -224,5 +249,18 @@ public class GameManager : MonoBehaviour
         _foxObject.SetActive(true);
         yield return new WaitForSeconds(15f);
         _foxObject.SetActive(false);
+    }
+    IEnumerator stopRain(float sec)
+    {
+        SetRain(GameObjectSystem.WeatherStat.NONE);
+        yield return new WaitForSeconds(sec);
+        SetRain((GameObjectSystem.WeatherStat)(_cStat.Level + 1));
+    }
+
+    IEnumerator callPowerRain(float sec)
+    {
+        SetRain(GameObjectSystem.WeatherStat.소나기);
+        yield return new WaitForSeconds(sec);
+        SetRain((GameObjectSystem.WeatherStat)(_cStat.Level + 1));
     }
 }
