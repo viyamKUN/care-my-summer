@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
     float _oneSecondBucket = 0;
     float _foxTimeBucket = 0;
 
+    int _miningMoneyAmount = 0;
+
     void Start()
     {
         _gameObjectManager.ReadData();
@@ -53,6 +55,8 @@ public class GameManager : MonoBehaviour
 
         _foxTimeBucket = Time.time;
         _oneSecondBucket = Time.time;
+
+        SetMiningMoneyAmount();
     }
 
     void Update()
@@ -73,6 +77,8 @@ public class GameManager : MonoBehaviour
         if (Time.time - _oneSecondBucket > 1)
         {
             _oneSecondBucket = Time.time;
+
+            AddMoney(_miningMoneyAmount);
             switch (_nowWeather)
             {
                 case GameObjectSystem.WeatherStat.NONE:
@@ -90,7 +96,6 @@ public class GameManager : MonoBehaviour
                     AddWaterDrop(_gameObjectManager.GetRainMineAmount(_nowWeather));
                     break;
             }
-
         }
     }
 
@@ -243,6 +248,7 @@ public class GameManager : MonoBehaviour
         if (!UseMoney(price)) return;
         _userData.Environments.Add(id);
         _gameObjectManager.SetEnvironmentObjects(_userData.Environments);
+        SetMiningMoneyAmount();
     }
     IEnumerator foxCoroutine()
     {
@@ -262,5 +268,14 @@ public class GameManager : MonoBehaviour
         SetRain(GameObjectSystem.WeatherStat.소나기);
         yield return new WaitForSeconds(sec);
         SetRain((GameObjectSystem.WeatherStat)(_cStat.Level + 1));
+    }
+
+    public void SetMiningMoneyAmount()
+    {
+        _miningMoneyAmount = 0;
+        foreach (int index in _userData.Environments)
+        {
+            _miningMoneyAmount += _gameObjectManager.EnvObjects[index].MiningAmount;
+        }
     }
 }
