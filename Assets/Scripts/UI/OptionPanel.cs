@@ -22,7 +22,7 @@ public class OptionPanel : MonoBehaviour
     }
     public void GoBlog()
     {
-        Application.OpenURL("https://viyamkun.github.io");
+        Application.OpenURL("https://viyamkun.github.io/posts/Summer-GameJam-2021/");
         SoundManager.Instance.PlayButtonSound();
     }
     public void DeleteData()
