@@ -31,9 +31,14 @@ public class UIManager : MonoBehaviour
     {
         _moneyText.text = amt.ToString() + " 장";
     }
-    public void SetRainText()
+    public void SetRainText(GameObjectSystem.WeatherStat weather)
     {
-        _rainText.text = ""; //가 내린다..
+        if (weather.Equals(GameObjectSystem.WeatherStat.NONE))
+        {
+            _rainText.text = "";
+            return;
+        }
+        _rainText.text = string.Format("{0}가 내린다..", weather.ToString());
     }
     public void ClickDict()
     {

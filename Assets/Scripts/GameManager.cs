@@ -11,10 +11,17 @@ public class GameManager : MonoBehaviour
     [SerializeField] private CharacterVisualManage _cVisualManager = null;
     [SerializeField] private UIManager _uiManager = null;
     [SerializeField] private GameObjectManaegr _gameObjectManager = null;
+    [Space]
     [SerializeField] private float _saveRate = 2f;
+    [Space]
+    [SerializeField] private GameObject _rainObject = null;
+
     UserData _userData;
     CharacterStatus _cStat;
+    GameObjectSystem.WeatherStat _nowWeather;
+
     float _saveTimeBucket = 0;
+
     void Start()
     {
         _gameObjectManager.ReadData();
@@ -25,9 +32,11 @@ public class GameManager : MonoBehaviour
         _uiManager.SetGageUI(_cStat.Level, _cStat.GrowGage);
         _uiManager.SetEnvStatUI(_cStat.Temper, _cStat.Water);
         _uiManager.SetMoneyUI(_userData.Money);
-        _uiManager.SetRainText();
 
         _cVisualManager.SetStats(_cStat.Temper, _cStat.Water);
+
+        _nowWeather = GameObjectSystem.WeatherStat.NONE;
+        _uiManager.SetRainText(_nowWeather);
 
         _saveTimeBucket = Time.time;
     }

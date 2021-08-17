@@ -26,4 +26,9 @@ namespace GameObjectSystem
             this.Price = price;
         }
     }
+
+    public enum WeatherStat
+    {
+        NONE, 안개비, 는개, 이슬비, 가랑비, 장대비, 소나기
+    }
 }
