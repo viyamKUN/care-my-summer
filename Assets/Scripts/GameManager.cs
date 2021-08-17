@@ -35,8 +35,7 @@ public class GameManager : MonoBehaviour
 
         _cVisualManager.SetStats(_cStat.Temper, _cStat.Water);
 
-        _nowWeather = GameObjectSystem.WeatherStat.NONE;
-        _uiManager.SetRainText(_nowWeather);
+        SetRain((GameObjectSystem.WeatherStat)(_cStat.Level + 1));
 
         _saveTimeBucket = Time.time;
     }
@@ -88,13 +87,29 @@ public class GameManager : MonoBehaviour
             return;
         }
     }
-
     void deleteData()
     {
         var filename = FixedValue.SAVE_PATH;
         File.Delete(filename);
     }
-
+    public void SetRain(GameObjectSystem.WeatherStat weather)
+    {
+        _nowWeather = weather;
+        _uiManager.SetRainText(_nowWeather);
+        switch (weather)
+        {
+            case GameObjectSystem.WeatherStat.NONE:
+                _rainObject.SetActive(false);
+                break;
+            case GameObjectSystem.WeatherStat.소나기:
+                _rainObject.SetActive(false);
+                // TODO Turn On 소나기 object
+                break;
+            default:
+                _rainObject.SetActive(true);
+                break;
+        }
+    }
     public void AddWaterDrop(int amt)
     {
         _cStat.GrowGage += amt;
