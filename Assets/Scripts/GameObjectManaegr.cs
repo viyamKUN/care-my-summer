@@ -7,10 +7,14 @@ using GameObjectSystem;
 public class GameObjectManaegr : MonoBehaviour
 {
     [SerializeField] private CSVReader _csvReader = null;
+    [SerializeField] private Sprite[] _itemImages = null;
+    [SerializeField] private Sprite[] _envImages = null;
 
     Dictionary<WeatherStat, int> _rainData = null;
     List<EnvObject> _envObjects;
     List<Item> _items;
+    public List<EnvObject> EnvObjects => _envObjects;
+    public List<Item> ItemObjects => _items;
 
     public void ReadData()
     {
@@ -22,8 +26,10 @@ public class GameObjectManaegr : MonoBehaviour
         };
     }
 
-    public int GetRainMineAmount(WeatherStat weather)
-    {
-        return _rainData[weather];
-    }
+    public int GetRainMineAmount(WeatherStat weather) => _rainData[weather];
+
+    public Sprite GetEnvImage(int index) => _envImages[index];
+
+    public Sprite GetItemImage(int index) => _itemImages[index];
+
 }

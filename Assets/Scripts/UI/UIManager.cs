@@ -18,7 +18,17 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _itemPanel = null;
     [SerializeField] private GameObject _envPanel = null;
     [SerializeField] private GameObject _dictPanel = null;
+    [Space]
+    [SerializeField] private EnvironmentPanel _environmentPanel = null;
+    [SerializeField] private ItemPanel _iPanel = null;
 
+    public void Init()
+    {
+        _environmentPanel.SetUI();
+        _iPanel.SetUI();
+        _envPanel.SetActive(false);
+        _itemPanel.SetActive(false);
+    }
     public void SetGageUI(int level, int waterdrop)
     {
         _levelText.text = FixedValue.LEVEL_NAME[level];
@@ -58,4 +68,5 @@ public class UIManager : MonoBehaviour
     {
         _summerseedIcon.gameObject.SetActive(true);
     }
+
 }

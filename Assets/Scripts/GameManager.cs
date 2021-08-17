@@ -32,6 +32,8 @@ public class GameManager : MonoBehaviour
         loadData();
         _cVisualManager.SetLevel(_cStat.Level);
 
+        _uiManager.Init();
+
         _uiManager.SetGageUI(_cStat.Level, _cStat.GrowGage);
         _uiManager.SetEnvStatUI(_cStat.Temper, _cStat.Water);
         _uiManager.SetMoneyUI(_userData.Money);
