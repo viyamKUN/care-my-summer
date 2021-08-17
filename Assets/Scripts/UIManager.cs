@@ -28,4 +28,9 @@ public class UIManager : MonoBehaviour
         _levelText.text = FixedValue.LEVEL_NAME[level];
         _waterdropGage.fillAmount = (float)waterdrop / FixedValue.MAX_GAGE[level];
     }
+    public void SetEnvStatUI(int temper, float water)
+    {
+        _waterGage.fillAmount = water;
+        _temperGage.fillAmount = (float)temper / FixedValue.MAX_TEMPER;
+    }
 }
