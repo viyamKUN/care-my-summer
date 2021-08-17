@@ -18,7 +18,7 @@ public class EndingListPanel : MonoBehaviour
         foreach (var e in _gameObjectManager.Endings)
         {
             _endingImage[i].sprite = _gameObjectManager.GetEndingImage(e.Value.ID);
-            _endingImage[i].color = _gameManager.IsEndingContain(e.Value.ID) ? Color.white : Color.gray;
+            _endingImage[i].color = _gameManager.IsEndingContain(e.Value.ID) ? Color.white : new Color(0.2f, 0.2f, 0.2f);
             i++;
         }
     }
