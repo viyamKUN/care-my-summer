@@ -745,25 +745,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &275103789
-Animator:
-  serializedVersion: 3
+--- !u!111 &275103789
+Animation:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 275103786}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 9bd6cc5fe939d4957af52b8e91def69d, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 9bd6cc5fe939d4957af52b8e91def69d, type: 2}
+  - {fileID: 7400000, guid: f616e198a2cad43f1938d1cfa3d28fef, type: 2}
+  - {fileID: 7400000, guid: a206e3c9b35f14175bd84c142a2d62a2, type: 2}
+  - {fileID: 7400000, guid: f06e09ca808124b469659e982c41674c, type: 2}
+  - {fileID: 7400000, guid: d569ab12750c84f22944babe3590c1a6, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &307199986
 GameObject:
   m_ObjectHideFlags: 0
