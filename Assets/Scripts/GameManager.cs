@@ -12,18 +12,21 @@ public class GameManager : MonoBehaviour
     [SerializeField] private UIManager _uiManager = null;
     [SerializeField] private GameObjectManaegr _gameObjectManager = null;
     [Space]
-    [SerializeField] private float _saveRate = 2f;
+    [SerializeField] private float _foxComeRate = 20f;
     [Space]
     [SerializeField] private GameObject _rainObject = null;
     [SerializeField] private GameObject _powerRainObject = null;
     [SerializeField] private GameObject _rainbowObject = null;
+    [SerializeField] private GameObject _foxObject = null;
 
     UserData _userData;
     CharacterStatus _cStat;
     GameObjectSystem.WeatherStat _nowWeather;
 
+    Coroutine _foxCome = null;
+
     float _oneSecondBucket = 0;
-    float _saveTimeBucket = 0;
+    float _foxTimeBucket = 0;
 
     void Start()
     {
@@ -46,7 +49,7 @@ public class GameManager : MonoBehaviour
 
         _gameObjectManager.SetEnvironmentObjects(_userData.Environments);
 
-        _saveTimeBucket = Time.time;
+        _foxTimeBucket = Time.time;
         _oneSecondBucket = Time.time;
     }
 
@@ -60,10 +63,10 @@ public class GameManager : MonoBehaviour
         {
             deleteData();
         }
-        if (Time.time - _saveTimeBucket > _saveRate)
+        if (Time.time - _foxTimeBucket > _foxComeRate)
         {
-            _saveTimeBucket = Time.time;
-            saveData();
+            _foxTimeBucket = Time.time;
+            _foxCome = StartCoroutine(foxCoroutine());
         }
         if (Time.time - _oneSecondBucket > 1)
         {
@@ -215,5 +218,11 @@ public class GameManager : MonoBehaviour
         }
         _userData.Environments.Add(id);
         _gameObjectManager.SetEnvironmentObjects(_userData.Environments);
+    }
+    IEnumerator foxCoroutine()
+    {
+        _foxObject.SetActive(true);
+        yield return new WaitForSeconds(15f);
+        _foxObject.SetActive(false);
     }
 }

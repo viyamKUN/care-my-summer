@@ -11850,10 +11850,11 @@ MonoBehaviour:
   _cVisualManager: {fileID: 2139011848}
   _uiManager: {fileID: 2139011846}
   _gameObjectManager: {fileID: 2139011851}
-  _saveRate: 10
+  _foxComeRate: 20
   _rainObject: {fileID: 1896746463}
   _powerRainObject: {fileID: 818773367}
   _rainbowObject: {fileID: 345053775}
+  _foxObject: {fileID: 254709016}
 --- !u!114 &2139011848
 MonoBehaviour:
   m_ObjectHideFlags: 0
