@@ -98,6 +98,7 @@ public class GameManager : MonoBehaviour
                     AddWaterDrop(_gameObjectManager.GetRainMineAmount(_nowWeather));
                     break;
             }
+            _rainbowObject.SetActive(_cStat.Temper >= FixedValue.MAX_TEMPER - 5 && _cStat.Water >= 0.8f);
         }
     }
 
@@ -181,7 +182,7 @@ public class GameManager : MonoBehaviour
     }
     public void ChangeTemper(float amt)
     {
-        _cStat.Temper = Mathf.Clamp(_cStat.Temper + amt, 10, 40);
+        _cStat.Temper = Mathf.Clamp(_cStat.Temper + amt, 10, FixedValue.MAX_TEMPER);
         _cVisualManager.SetStats(_cStat.Temper, _cStat.Water);
         _uiManager.SetEnvStatUI(_cStat.Temper, _cStat.Water);
         saveData();
@@ -297,10 +298,11 @@ public class GameManager : MonoBehaviour
     public void CallEnding(string code)
     {
         int endingID = _gameObjectManager.GetEnding(code).ID;
-        if (_userData.Endings.Contains(endingID)) return;
+        if (!_userData.Endings.Contains(endingID))
+            _userData.Endings.Add(endingID);
 
         _userData.Money += 2000;
-        _userData.Endings.Add(endingID);
+        _userData.cStatus = new CharacterStatus();
         saveData();
 
         if (!_uiManager.ShowEnding(code)) return;
