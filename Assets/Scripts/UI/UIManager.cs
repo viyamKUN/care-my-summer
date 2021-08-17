@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+using GameObjectSystem;
+
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private Text _levelText = null;
@@ -21,6 +23,17 @@ public class UIManager : MonoBehaviour
     [Space]
     [SerializeField] private EnvironmentPanel _environmentPanel = null;
     [SerializeField] private ItemPanel _iPanel = null;
+    [SerializeField] private PurchasePanel _purchasePanel = null;
+    [Space]
+    [SerializeField] private GameObjectManaegr _gameObjectManager = null;
+
+    public static UIManager Instance = null;
+    purchaseTemp _perchaseTemp;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     public void Init()
     {
@@ -58,23 +71,57 @@ public class UIManager : MonoBehaviour
     {
         _envPanel.SetActive(false);
         _itemPanel.SetActive(false);
+        ShutPurchasePanel();
         _dictPanel.SetActive(!_dictPanel.activeSelf);
     }
     public void ClickEnv()
     {
         _itemPanel.SetActive(false);
         _dictPanel.SetActive(false);
+        ShutPurchasePanel();
         _envPanel.SetActive(!_envPanel.activeSelf);
     }
     public void ClickItem()
     {
         _envPanel.SetActive(false);
         _dictPanel.SetActive(false);
+        ShutPurchasePanel();
         _itemPanel.SetActive(!_itemPanel.activeSelf);
     }
     public void ShowSeed()
     {
         _summerseedIcon.gameObject.SetActive(true);
     }
+    public void ShowPurchasePanel(string code, int id)
+    {
+        _perchaseTemp.Code = code;
+        _perchaseTemp.ID = id;
 
+        switch (code)
+        {
+            case "E":
+                EnvObject envObj = _gameObjectManager.EnvObjects[id];
+                _purchasePanel.SetPanel(_gameObjectManager.GetEnvImage(id), envObj.Name, envObj.Info(), envObj.Price);
+                break;
+            case "I":
+                Item itemObj = _gameObjectManager.ItemObjects[id];
+                _purchasePanel.SetPanel(_gameObjectManager.GetItemImage(id), itemObj.Name, itemObj.Info, itemObj.Price);
+                break;
+        }
+        _purchasePanel.gameObject.SetActive(true);
+    }
+    public void ShutPurchasePanel()
+    {
+        _purchasePanel.gameObject.SetActive(false);
+    }
+    public void Buy()
+    {
+        Debug.Log(_perchaseTemp.Code + " : " + _perchaseTemp.ID);
+    }
+}
+
+struct purchaseTemp
+{
+    public string Code;
+    public int ID;
 }

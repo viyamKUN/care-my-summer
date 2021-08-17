@@ -16,7 +16,7 @@ public class EnvironmentPanel : MonoBehaviour
         int i = 0;
         foreach (EnvObject e in _gameObjectManager.EnvObjects)
         {
-            _envUnits[i].SetUnit(_gameObjectManager.GetEnvImage(i), e.Name, string.Format("초당 {0}개의 나뭇잎", e.MiningAmount), e.Price);
+            _envUnits[i].SetUnit("E", i, _gameObjectManager.GetEnvImage(i), e.Name, e.Info(), e.Price);
             i++;
         }
     }

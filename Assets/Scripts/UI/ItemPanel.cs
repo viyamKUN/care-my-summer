@@ -16,7 +16,7 @@ public class ItemPanel : MonoBehaviour
         int i = 0;
         foreach (Item e in _gameObjectManager.ItemObjects)
         {
-            _envUnits[i].SetUnit(_gameObjectManager.GetItemImage(i), e.Name, e.Info, e.Price);
+            _envUnits[i].SetUnit("I", i, _gameObjectManager.GetItemImage(i), e.Name, e.Info, e.Price);
             i++;
         }
     }
