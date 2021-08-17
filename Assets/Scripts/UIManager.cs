@@ -20,7 +20,7 @@ public class UIManager : MonoBehaviour
     }
     public void GoMain()
     {
-        // TODO
+        SceneControll.MoveScene(SceneName.LOBBY);
     }
 
     public void SetGageUI(int level, int waterdrop)
