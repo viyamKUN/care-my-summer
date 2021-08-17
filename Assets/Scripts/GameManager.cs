@@ -161,8 +161,7 @@ public class GameManager : MonoBehaviour
         {
             if (_cStat.Level >= FixedValue.MAX_LEVEL)
             {
-                Debug.Log("Call Ending");
-                _userData.Money += 2000;
+                CallEnding("Perfect");
                 return;
             }
             _cVisualManager.SetLevel(++_cStat.Level);
@@ -176,6 +175,8 @@ public class GameManager : MonoBehaviour
         _cStat.Temper = Mathf.Clamp(_cStat.Temper + amt, 10, 40);
         _cVisualManager.SetStats(_cStat.Temper, _cStat.Water);
         _uiManager.SetEnvStatUI(_cStat.Temper, _cStat.Water);
+        saveData();
+        if (_cStat.Temper < 5) CallEnding("LowTemper");
     }
 
     public void ChangeWater(float amt)
@@ -183,6 +184,8 @@ public class GameManager : MonoBehaviour
         _cStat.Water = Mathf.Clamp(_cStat.Water + amt, 0, 1);
         _cVisualManager.SetStats(_cStat.Temper, _cStat.Water);
         _uiManager.SetEnvStatUI(_cStat.Temper, _cStat.Water);
+        saveData();
+        if (_cStat.Water < 0.1f) CallEnding("LowWater");
     }
     public void AddMoney(int amt)
     {
@@ -287,7 +290,9 @@ public class GameManager : MonoBehaviour
         int endingID = _gameObjectManager.GetEnding(code).ID;
         if (_userData.Endings.Contains(endingID)) return;
 
+        _userData.Money += 2000;
         _userData.Endings.Add(endingID);
+        saveData();
 
         if (!_uiManager.ShowEnding(code)) return;
     }
