@@ -31,7 +31,7 @@ namespace CharacterNamespace
         {
             Level = 0;
             GrowGage = 0;
-            Temper = 25;
+            Temper = 30;
             Water = 0.2f;
             HasSeed = false;
         }

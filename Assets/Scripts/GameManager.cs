@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
             {
                 case GameObjectSystem.WeatherStat.NONE:
                     ChangeWater(-0.01f);
-                    ChangeTemper(0.1f);
+                    ChangeTemper(0.2f);
                     break;
                 case GameObjectSystem.WeatherStat.소나기:
                     ChangeWater(0.02f);
